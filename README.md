@@ -13,7 +13,7 @@ A production-style **security information and event management pipeline** built 
 ## What it does
 
 ```
-Raw Logs (JSON / CSV / JSONL)
+Raw Logs (JSON / CSV / JSONL)   ←  POST /ingest  (live API ingestion)
         │
         ▼
    Log Parsers          ← dirty-data tolerant, format auto-detected
@@ -25,7 +25,10 @@ Raw Logs (JSON / CSV / JSONL)
   Rule Engine           ← stateful, MITRE ATT&CK mapped detection rules
         │
         ▼
-  Alerts + Summary      ← JSON output, CLI summary, REST API
+  SQLite Persistence    ← events + alerts stored for historical queries
+        │
+        ▼
+  REST API              ← GET /alerts  GET /stats  (filter, paginate, aggregate)
 ```
 
 ---
@@ -50,9 +53,36 @@ Raw Logs (JSON / CSV / JSONL)
 | `GET` | `/health` | Health check — `{"status": "ok"}` |
 | `GET` | `/rules` | List all detection rules with MITRE metadata |
 | `GET` | `/events?limit=20` | List normalized events from sample data |
-| `POST` | `/run?source=<name>` | Run full pipeline — normalize + detect |
+| `POST` | `/run?source=<name>` | Run full pipeline on bundled sample data |
+| `POST` | `/ingest` | **Ingest live log records → normalize → detect → persist** |
+| `GET` | `/alerts` | Query stored alerts (filter by severity, rule\_id; paginate) |
+| `GET` | `/stats` | Aggregate counts by severity and rule across all stored data |
 | `GET` | `/docs` | Interactive Swagger UI |
 | `GET` | `/redoc` | ReDoc documentation |
+
+### POST /ingest — example
+
+```bash
+curl -X POST https://siem-pipeline.up.railway.app/ingest \
+  -H "Content-Type: application/json" \
+  -d '{
+    "source": "firewall",
+    "logs": [
+      {"src_ip": "192.0.2.1", "dst_port": 22, "action": "DENY"},
+      {"src_ip": "10.0.0.5", "event": "login_failed", "user": "admin"}
+    ]
+  }'
+```
+
+### GET /alerts — example
+
+```bash
+# All critical alerts, newest first
+curl "https://siem-pipeline.up.railway.app/alerts?severity=critical&limit=20"
+
+# Alerts from a specific rule
+curl "https://siem-pipeline.up.railway.app/alerts?rule_id=RULE-1001"
+```
 
 ---
 
@@ -64,6 +94,7 @@ siem-pipeline/
 ├── siem_pipeline/
 │   ├── cli.py                   # CLI entrypoint (argparse)
 │   ├── pipeline.py              # Orchestrator — wires all layers
+│   ├── db.py                    # SQLite persistence (events + alerts)
 │   ├── parsers/
 │   │   ├── base.py              # Abstract BaseParser contract
 │   │   ├── json_parser.py       # JSON array + NDJSON/JSON-L
@@ -77,7 +108,7 @@ siem-pipeline/
 │   └── utils/
 │       ├── schema.py            # NormalizedEvent dataclass
 │       └── logger.py            # Structured logging config
-├── tests/                       # 91 pytest unit + integration tests
+├── tests/                       # 116 pytest unit + integration tests
 ├── data/
 │   ├── raw/                     # Sample input logs (JSON, JSONL, CSV)
 │   └── sample_output/           # Example pipeline output
@@ -166,6 +197,7 @@ siem-pipeline run data/raw/ --rules-file my_rules.py
 pip install -r requirements-dev.txt
 pytest                                          # 91 tests
 pytest --cov=siem_pipeline --cov-report=term-missing
+# 116 tests, 82% coverage
 ```
 
 ---
@@ -187,7 +219,8 @@ pytest --cov=siem_pipeline --cov-report=term-missing
 - **Python 3.11** — stdlib only for core pipeline; no heavy dependencies
 - **FastAPI** — REST API with auto-generated OpenAPI docs
 - **uvicorn** — ASGI server
-- **pytest** — 91 unit and integration tests
+- **SQLite** — zero-config persistence for events and alerts (stdlib)
+- **pytest** — 116 unit and integration tests
 - **Railway** — deployment platform
 
 ---

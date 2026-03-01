@@ -8,11 +8,17 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
-from fastapi import FastAPI, HTTPException
+from datetime import datetime, timezone
+
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 
 from siem_pipeline.pipeline import Pipeline
+from siem_pipeline import db as _db
+
+# Ensure DB schema exists at startup
+_db.init_db()
 
 app = FastAPI(
     title="SIEM Pipeline API",
@@ -390,3 +396,112 @@ def list_events(limit: int = 20):
     _, events, _ = pipeline.run(input_paths)
     capped = events[:limit]
     return EventsResponse(count=len(events), events=[e.to_dict() for e in capped])
+
+
+# ---------------------------------------------------------------------------
+# Persistence endpoints
+# ---------------------------------------------------------------------------
+
+class IngestRequest(BaseModel):
+    source: str = "api"
+    logs: list[dict[str, Any]]
+
+
+class IngestResponse(BaseModel):
+    events_stored: int
+    alerts_triggered: int
+    alerts: list[dict[str, Any]]
+
+
+class AlertsResponse(BaseModel):
+    count: int
+    alerts: list[dict[str, Any]]
+
+
+class StatsResponse(BaseModel):
+    total_events: int
+    total_alerts: int
+    alerts_by_severity: dict[str, int]
+    alerts_by_rule: dict[str, int]
+
+
+@app.post(
+    "/ingest",
+    response_model=IngestResponse,
+    summary="Ingest log records and persist alerts",
+    description=(
+        "Accepts a JSON array of raw log records, normalizes them to the canonical "
+        "schema, runs all detection rules, **stores results in SQLite**, and returns "
+        "any triggered alerts.\n\n"
+        "Use `GET /alerts` to query historical alerts and `GET /stats` for aggregates.\n\n"
+        "**Example body:**\n"
+        "```json\n"
+        '{"source": "firewall", "logs": [{"src_ip": "10.0.0.1", "action": "DENY"}]}\n'
+        "```"
+    ),
+    tags=["Persistence"],
+)
+def ingest_logs(request: IngestRequest):
+    from siem_pipeline.normalizers import LogNormalizer
+    from siem_pipeline.rules.engine import RuleEngine
+    from siem_pipeline.utils.schema import NormalizedEvent
+
+    normalizer = LogNormalizer(log_source=request.source)
+    engine = RuleEngine()
+    engine.load_builtin_rules()
+
+    events: list[NormalizedEvent] = [normalizer.normalize(r) for r in request.logs]
+    matches = list(engine.run(iter(events)))
+
+    ingest_ts = datetime.now(timezone.utc).isoformat()
+    event_dicts = [e.to_dict() for e in events]
+    alert_dicts = [m.to_dict() for m in matches]
+
+    _db.store_events(event_dicts, source=request.source, ingest_ts=ingest_ts)
+    _db.store_alerts(alert_dicts, ingest_ts=ingest_ts)
+
+    return IngestResponse(
+        events_stored=len(event_dicts),
+        alerts_triggered=len(alert_dicts),
+        alerts=alert_dicts,
+    )
+
+
+@app.get(
+    "/alerts",
+    response_model=AlertsResponse,
+    summary="Query stored alerts",
+    description=(
+        "Returns alerts persisted by `POST /ingest`. Supports optional filters:\n\n"
+        "- `severity` — filter by `low`, `medium`, `high`, or `critical`\n"
+        "- `rule_id` — filter by rule identifier (e.g. `RULE-1001`)\n"
+        "- `limit` / `offset` — pagination (default limit=100)\n\n"
+        "Results are ordered newest-first."
+    ),
+    tags=["Persistence"],
+)
+def get_alerts(
+    severity: str | None = Query(None, description="Filter by severity level"),
+    rule_id: str | None = Query(None, description="Filter by rule ID"),
+    limit: int = Query(100, ge=1, le=500),
+    offset: int = Query(0, ge=0),
+):
+    rows = _db.query_alerts(
+        severity=severity, rule_id=rule_id, limit=limit, offset=offset
+    )
+    return AlertsResponse(count=len(rows), alerts=rows)
+
+
+@app.get(
+    "/stats",
+    response_model=StatsResponse,
+    summary="Aggregate statistics from persisted data",
+    description=(
+        "Returns total event and alert counts broken down by severity and rule name. "
+        "Counts reflect all data persisted via `POST /ingest` since the service started "
+        "(or since the SQLite database was last initialized)."
+    ),
+    tags=["Persistence"],
+)
+def get_stats():
+    return StatsResponse(**_db.query_stats())
