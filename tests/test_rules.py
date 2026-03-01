@@ -278,3 +278,50 @@ class TestRuleEngine:
         d = m.to_dict()
         assert "matched_event" in d
         assert "mitre_technique" in d
+
+
+# ===========================================================================
+# RuleEngine config loading
+# ===========================================================================
+
+class TestRuleEngineConfig:
+    def test_config_overrides_brute_force_threshold(self, tmp_path):
+        cfg = tmp_path / "rules_config.yaml"
+        cfg.write_text("brute_force_login:\n  threshold: 2\n  window_seconds: 300\n")
+        engine = RuleEngine()
+        engine.load_builtin_rules(config_path=cfg)
+        from siem_pipeline.rules.builtin_rules import BruteForceLoginRule
+        rule = next(r for r in engine.rules if isinstance(r, BruteForceLoginRule))
+        assert rule.THRESHOLD == 2
+
+    def test_config_overrides_watchlist(self, tmp_path):
+        cfg = tmp_path / "rules_config.yaml"
+        cfg.write_text("watchlist_ips:\n  ips:\n    - 1.2.3.4\n")
+        engine = RuleEngine()
+        engine.load_builtin_rules(config_path=cfg)
+        from siem_pipeline.rules.builtin_rules import WatchlistIPRule
+        rule = next(r for r in engine.rules if isinstance(r, WatchlistIPRule))
+        assert "1.2.3.4" in rule.WATCHLIST
+
+    def test_config_missing_keys_keeps_defaults(self, tmp_path):
+        cfg = tmp_path / "rules_config.yaml"
+        cfg.write_text("{}\n")
+        engine = RuleEngine()
+        engine.load_builtin_rules(config_path=cfg)
+        from siem_pipeline.rules.builtin_rules import BruteForceLoginRule
+        rule = next(r for r in engine.rules if isinstance(r, BruteForceLoginRule))
+        assert rule.THRESHOLD == BruteForceLoginRule.THRESHOLD
+
+    def test_nonexistent_config_path_ignored(self):
+        from pathlib import Path
+        engine = RuleEngine()
+        engine.load_builtin_rules(config_path=Path("/nonexistent/path.yaml"))
+        assert len(engine.rules) == 5
+
+    def test_malformed_yaml_handled_gracefully(self, tmp_path):
+        cfg = tmp_path / "bad.yaml"
+        cfg.write_text("brute_force_login: [\n")  # invalid YAML
+        engine = RuleEngine()
+        # Should not raise — logs an error and continues with defaults
+        engine.load_builtin_rules(config_path=cfg)
+        assert len(engine.rules) == 5
