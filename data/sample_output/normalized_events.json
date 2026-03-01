@@ -1,0 +1,601 @@
+[
+  {
+    "event_id": "cc2a763d-f008-4920-8eff-47a015cd9a40",
+    "pipeline_ts": "2026-03-01T22:42:41.325889+00:00",
+    "timestamp": "2024-03-15T08:00:01+00:00",
+    "source_ip": "10.0.0.5",
+    "dest_ip": "203.0.113.99",
+    "source_port": 54320,
+    "dest_port": 443,
+    "protocol": "TCP",
+    "hostname": "fw-edge-01",
+    "action": "allowed",
+    "log_source": "demo",
+    "extra": {
+      "bytes_sent": "1240",
+      "bytes_received": "8800"
+    }
+  },
+  {
+    "event_id": "7ee88f78-9120-421d-8cca-7e1068120da7",
+    "pipeline_ts": "2026-03-01T22:42:41.326594+00:00",
+    "timestamp": "2024-03-15T08:00:02+00:00",
+    "source_ip": "10.0.0.5",
+    "dest_ip": "203.0.113.99",
+    "source_port": 54321,
+    "dest_port": 80,
+    "protocol": "TCP",
+    "hostname": "fw-edge-01",
+    "action": "allowed",
+    "log_source": "demo",
+    "extra": {
+      "bytes_sent": "320",
+      "bytes_received": "12000"
+    }
+  },
+  {
+    "event_id": "ff0aea42-a644-45f5-81c8-3a029c347b13",
+    "pipeline_ts": "2026-03-01T22:42:41.326620+00:00",
+    "timestamp": "2024-03-15T08:00:03+00:00",
+    "source_ip": "10.0.0.5",
+    "dest_ip": "203.0.113.99",
+    "source_port": 54322,
+    "dest_port": 22,
+    "protocol": "TCP",
+    "hostname": "fw-edge-01",
+    "action": "blocked",
+    "log_source": "demo",
+    "extra": {
+      "bytes_sent": "0",
+      "bytes_received": "0"
+    }
+  },
+  {
+    "event_id": "f10ecd43-6bcf-45a8-9a1b-3167775583e8",
+    "pipeline_ts": "2026-03-01T22:42:41.326647+00:00",
+    "timestamp": "2024-03-15T08:00:04+00:00",
+    "source_ip": "10.0.0.5",
+    "dest_ip": "203.0.113.99",
+    "source_port": 54323,
+    "dest_port": 8080,
+    "protocol": "TCP",
+    "hostname": "fw-edge-01",
+    "action": "blocked",
+    "log_source": "demo",
+    "extra": {
+      "bytes_sent": "0",
+      "bytes_received": "0"
+    }
+  },
+  {
+    "event_id": "c56345a9-7a33-4ed2-a9d7-1d3ab0876243",
+    "pipeline_ts": "2026-03-01T22:42:41.326666+00:00",
+    "timestamp": "2024-03-15T08:00:05+00:00",
+    "source_ip": "10.0.0.5",
+    "dest_ip": "203.0.113.99",
+    "source_port": 54324,
+    "dest_port": 3306,
+    "protocol": "TCP",
+    "hostname": "fw-edge-01",
+    "action": "blocked",
+    "log_source": "demo",
+    "extra": {
+      "bytes_sent": "0",
+      "bytes_received": "0"
+    }
+  },
+  {
+    "event_id": "649e5359-f306-42ae-a994-b268b0ad18b4",
+    "pipeline_ts": "2026-03-01T22:42:41.326684+00:00",
+    "timestamp": "2024-03-15T08:00:06+00:00",
+    "source_ip": "10.0.0.5",
+    "dest_ip": "203.0.113.99",
+    "source_port": 54325,
+    "dest_port": 5432,
+    "protocol": "TCP",
+    "hostname": "fw-edge-01",
+    "action": "blocked",
+    "log_source": "demo",
+    "extra": {
+      "bytes_sent": "0",
+      "bytes_received": "0"
+    }
+  },
+  {
+    "event_id": "751ca222-19db-4716-9064-460415506028",
+    "pipeline_ts": "2026-03-01T22:42:41.326699+00:00",
+    "timestamp": "2024-03-15T08:00:07+00:00",
+    "source_ip": "10.0.0.5",
+    "dest_ip": "203.0.113.99",
+    "source_port": 54326,
+    "dest_port": 6379,
+    "protocol": "TCP",
+    "hostname": "fw-edge-01",
+    "action": "blocked",
+    "log_source": "demo",
+    "extra": {
+      "bytes_sent": "0",
+      "bytes_received": "0"
+    }
+  },
+  {
+    "event_id": "fe12ff5c-4bfc-4f51-8427-d184a90d9bc8",
+    "pipeline_ts": "2026-03-01T22:42:41.326720+00:00",
+    "timestamp": "2024-03-15T08:00:08+00:00",
+    "source_ip": "10.0.0.5",
+    "dest_ip": "203.0.113.99",
+    "source_port": 54327,
+    "dest_port": 27017,
+    "protocol": "TCP",
+    "hostname": "fw-edge-01",
+    "action": "blocked",
+    "log_source": "demo",
+    "extra": {
+      "bytes_sent": "0",
+      "bytes_received": "0"
+    }
+  },
+  {
+    "event_id": "23bb1845-34c4-43da-be76-ef52525d1df1",
+    "pipeline_ts": "2026-03-01T22:42:41.326737+00:00",
+    "timestamp": "2024-03-15T08:00:09+00:00",
+    "source_ip": "10.0.0.5",
+    "dest_ip": "203.0.113.99",
+    "source_port": 54328,
+    "dest_port": 9200,
+    "protocol": "TCP",
+    "hostname": "fw-edge-01",
+    "action": "blocked",
+    "log_source": "demo",
+    "extra": {
+      "bytes_sent": "0",
+      "bytes_received": "0"
+    }
+  },
+  {
+    "event_id": "0d8df5ee-5c96-437c-874b-55ec39e2577e",
+    "pipeline_ts": "2026-03-01T22:42:41.326753+00:00",
+    "timestamp": "2024-03-15T08:00:10+00:00",
+    "source_ip": "10.0.0.5",
+    "dest_ip": "203.0.113.99",
+    "source_port": 54329,
+    "dest_port": 5900,
+    "protocol": "TCP",
+    "hostname": "fw-edge-01",
+    "action": "blocked",
+    "log_source": "demo",
+    "extra": {
+      "bytes_sent": "0",
+      "bytes_received": "0"
+    }
+  },
+  {
+    "event_id": "a9d44c72-1703-44ed-870e-43807d234895",
+    "pipeline_ts": "2026-03-01T22:42:41.326770+00:00",
+    "timestamp": "2024-03-15T08:00:11+00:00",
+    "source_ip": "10.0.0.5",
+    "dest_ip": "203.0.113.99",
+    "source_port": 54330,
+    "dest_port": 23,
+    "protocol": "TCP",
+    "hostname": "fw-edge-01",
+    "action": "blocked",
+    "log_source": "demo",
+    "extra": {
+      "bytes_sent": "0",
+      "bytes_received": "0"
+    }
+  },
+  {
+    "event_id": "424b19ff-7744-4963-bb39-307fca6384f1",
+    "pipeline_ts": "2026-03-01T22:42:41.326786+00:00",
+    "timestamp": "2024-03-15T08:00:12+00:00",
+    "source_ip": "10.0.0.5",
+    "dest_ip": "203.0.113.99",
+    "source_port": 54331,
+    "dest_port": 445,
+    "protocol": "TCP",
+    "hostname": "fw-edge-01",
+    "action": "blocked",
+    "log_source": "demo",
+    "extra": {
+      "bytes_sent": "0",
+      "bytes_received": "0"
+    }
+  },
+  {
+    "event_id": "e2d23f0a-c1ef-443a-bb90-45ddb94472ab",
+    "pipeline_ts": "2026-03-01T22:42:41.326800+00:00",
+    "timestamp": "2024-03-15T08:00:13+00:00",
+    "source_ip": "10.0.0.5",
+    "dest_ip": "203.0.113.99",
+    "source_port": 54332,
+    "dest_port": 139,
+    "protocol": "TCP",
+    "hostname": "fw-edge-01",
+    "action": "blocked",
+    "log_source": "demo",
+    "extra": {
+      "bytes_sent": "0",
+      "bytes_received": "0"
+    }
+  },
+  {
+    "event_id": "a97390fa-b5cc-4378-84e0-26f6531789ff",
+    "pipeline_ts": "2026-03-01T22:42:41.326814+00:00",
+    "timestamp": "2024-03-15T08:00:14+00:00",
+    "source_ip": "10.0.0.5",
+    "dest_ip": "203.0.113.99",
+    "source_port": 54333,
+    "dest_port": 3389,
+    "protocol": "TCP",
+    "hostname": "fw-edge-01",
+    "action": "blocked",
+    "log_source": "demo",
+    "extra": {
+      "bytes_sent": "0",
+      "bytes_received": "0"
+    }
+  },
+  {
+    "event_id": "7547a5c2-a876-4fa7-94ae-33f148b0a1ca",
+    "pipeline_ts": "2026-03-01T22:42:41.326830+00:00",
+    "timestamp": "2024-03-15T08:00:15+00:00",
+    "source_ip": "10.0.0.5",
+    "dest_ip": "203.0.113.99",
+    "source_port": 54334,
+    "dest_port": 1433,
+    "protocol": "TCP",
+    "hostname": "fw-edge-01",
+    "action": "blocked",
+    "log_source": "demo",
+    "extra": {
+      "bytes_sent": "0",
+      "bytes_received": "0"
+    }
+  },
+  {
+    "event_id": "a2be4539-f9f0-453f-849a-80c62f53b2eb",
+    "pipeline_ts": "2026-03-01T22:42:41.326844+00:00",
+    "timestamp": "2024-03-15T08:00:16+00:00",
+    "source_ip": "10.0.0.5",
+    "dest_ip": "203.0.113.99",
+    "source_port": 54335,
+    "dest_port": 5985,
+    "protocol": "TCP",
+    "hostname": "fw-edge-01",
+    "action": "blocked",
+    "log_source": "demo",
+    "extra": {
+      "bytes_sent": "0",
+      "bytes_received": "0"
+    }
+  },
+  {
+    "event_id": "1d7dcbc0-1e33-46ec-9b56-ba5541342fd3",
+    "pipeline_ts": "2026-03-01T22:42:41.326859+00:00",
+    "timestamp": "2024-03-15T09:15:00+00:00",
+    "source_ip": "192.0.2.1",
+    "dest_ip": "10.0.0.100",
+    "source_port": 80,
+    "dest_port": 49200,
+    "protocol": "TCP",
+    "hostname": "fw-edge-01",
+    "action": "allowed",
+    "log_source": "demo",
+    "extra": {
+      "bytes_sent": "15000",
+      "bytes_received": "320"
+    }
+  },
+  {
+    "event_id": "9556602a-15fe-4595-bb71-74b4e4e3a7ba",
+    "pipeline_ts": "2026-03-01T22:42:41.326873+00:00",
+    "timestamp": "2024-03-15T09:16:00+00:00",
+    "source_ip": "10.0.1.50",
+    "dest_ip": "8.8.8.8",
+    "source_port": 52000,
+    "dest_port": 53,
+    "protocol": "UDP",
+    "hostname": "fw-edge-01",
+    "action": "allowed",
+    "log_source": "demo",
+    "extra": {
+      "bytes_sent": "64",
+      "bytes_received": "128"
+    }
+  },
+  {
+    "event_id": "13aee76b-cb03-426d-9b7b-b9a7ac946a29",
+    "pipeline_ts": "2026-03-01T22:42:41.326887+00:00",
+    "timestamp": "2024-03-15T09:17:00+00:00",
+    "source_ip": "10.0.2.30",
+    "dest_ip": "10.0.0.1",
+    "source_port": 60000,
+    "dest_port": 22,
+    "protocol": "TCP",
+    "hostname": "fw-internal-01",
+    "action": "allowed",
+    "log_source": "demo",
+    "extra": {
+      "bytes_sent": "2400",
+      "bytes_received": "1800"
+    }
+  },
+  {
+    "event_id": "05621ec4-fa1c-4a7c-aa42-c1fda3b88dc1",
+    "pipeline_ts": "2026-03-01T22:42:41.326900+00:00",
+    "timestamp": "2024-03-15T09:18:00+00:00",
+    "dest_ip": "10.0.0.50",
+    "dest_port": 443,
+    "protocol": "TCP",
+    "hostname": "fw-edge-01",
+    "action": "allowed",
+    "log_source": "demo",
+    "extra": {
+      "bytes_sent": "500",
+      "bytes_received": "1200"
+    }
+  },
+  {
+    "event_id": "c1137d13-b0af-486b-894b-6856adbe39d5",
+    "pipeline_ts": "2026-03-01T22:42:41.326914+00:00",
+    "timestamp": "2024-03-15T09:19:00+00:00",
+    "source_ip": "10.0.3.40",
+    "dest_ip": "10.0.0.200",
+    "dest_port": 8443,
+    "protocol": "TCP",
+    "hostname": "fw-internal-01",
+    "action": "allowed",
+    "log_source": "demo",
+    "extra": {
+      "bytes_sent": "700",
+      "bytes_received": "9000"
+    }
+  },
+  {
+    "event_id": "f5ac5808-6488-4f0a-9847-5410a073bf20",
+    "pipeline_ts": "2026-03-01T22:42:41.327559+00:00",
+    "timestamp": "2024-03-15T02:14:01+00:00",
+    "source_ip": "198.51.100.5",
+    "username": "jsmith",
+    "hostname": "auth-server-01",
+    "action": "login_failed",
+    "outcome": "failure",
+    "severity": "medium",
+    "log_source": "demo",
+    "raw_message": "SSH authentication failure for user jsmith"
+  },
+  {
+    "event_id": "0f3d2648-e3af-410c-b8d0-405f7df7bd61",
+    "pipeline_ts": "2026-03-01T22:42:41.327577+00:00",
+    "timestamp": "2024-03-15T02:14:08+00:00",
+    "source_ip": "198.51.100.5",
+    "username": "jsmith",
+    "hostname": "auth-server-01",
+    "action": "login_failed",
+    "outcome": "failure",
+    "severity": "medium",
+    "log_source": "demo",
+    "raw_message": "SSH authentication failure for user jsmith"
+  },
+  {
+    "event_id": "9adfe490-c49e-45db-8a61-6b524f9a91f0",
+    "pipeline_ts": "2026-03-01T22:42:41.327591+00:00",
+    "timestamp": "2024-03-15T02:14:15+00:00",
+    "source_ip": "198.51.100.5",
+    "username": "jsmith",
+    "hostname": "auth-server-01",
+    "action": "login_failed",
+    "outcome": "failure",
+    "severity": "medium",
+    "log_source": "demo",
+    "raw_message": "SSH authentication failure for user jsmith"
+  },
+  {
+    "event_id": "b4829492-ad02-4e89-b807-d2b6271ef6c1",
+    "pipeline_ts": "2026-03-01T22:42:41.327605+00:00",
+    "timestamp": "2024-03-15T02:14:22+00:00",
+    "source_ip": "198.51.100.5",
+    "username": "jsmith",
+    "hostname": "auth-server-01",
+    "action": "login_failed",
+    "outcome": "failure",
+    "severity": "medium",
+    "log_source": "demo",
+    "raw_message": "SSH authentication failure for user jsmith"
+  },
+  {
+    "event_id": "5bf44981-aff6-4c03-8bb0-389c5343bcaf",
+    "pipeline_ts": "2026-03-01T22:42:41.327618+00:00",
+    "timestamp": "2024-03-15T02:14:29+00:00",
+    "source_ip": "198.51.100.5",
+    "username": "jsmith",
+    "hostname": "auth-server-01",
+    "action": "login_failed",
+    "outcome": "failure",
+    "severity": "medium",
+    "log_source": "demo",
+    "raw_message": "SSH authentication failure for user jsmith"
+  },
+  {
+    "event_id": "8bf1ced6-ddba-4b0a-92f8-5403025e5933",
+    "pipeline_ts": "2026-03-01T22:42:41.327632+00:00",
+    "timestamp": "2024-03-15T02:14:36+00:00",
+    "source_ip": "198.51.100.5",
+    "username": "jsmith",
+    "hostname": "auth-server-01",
+    "action": "login_failed",
+    "outcome": "failure",
+    "severity": "medium",
+    "log_source": "demo",
+    "raw_message": "SSH authentication failure for user jsmith \u2014 BRUTE FORCE THRESHOLD MET"
+  },
+  {
+    "event_id": "da687ee3-bc8f-4f82-b1da-4cf5b755f619",
+    "pipeline_ts": "2026-03-01T22:42:41.327645+00:00",
+    "timestamp": "2024-03-15T03:45:00+00:00",
+    "source_ip": "203.0.113.10",
+    "username": "admin",
+    "hostname": "auth-server-01",
+    "action": "login_success",
+    "outcome": "success",
+    "severity": "low",
+    "log_source": "demo",
+    "raw_message": "Successful SSH login for admin at 03:45 UTC"
+  },
+  {
+    "event_id": "1baa3445-aead-4f4a-9d59-0a6d1a9ded92",
+    "pipeline_ts": "2026-03-01T22:42:41.327659+00:00",
+    "timestamp": "2024-03-15T14:22:10+00:00",
+    "source_ip": "10.0.0.42",
+    "username": "bwilson",
+    "hostname": "auth-server-01",
+    "action": "login_success",
+    "outcome": "success",
+    "severity": "low",
+    "log_source": "demo",
+    "raw_message": "Successful login for bwilson"
+  },
+  {
+    "event_id": "e9b234b8-f335-4edb-8b0d-ec21d8481dc7",
+    "pipeline_ts": "2026-03-01T22:42:41.327673+00:00",
+    "timestamp": "2024-03-15T14:22:55+00:00",
+    "source_ip": "10.0.1.15",
+    "username": "bwilson",
+    "hostname": "auth-server-01",
+    "action": "login_success",
+    "outcome": "success",
+    "severity": "low",
+    "log_source": "demo",
+    "raw_message": "Successful login for bwilson from secondary workstation"
+  },
+  {
+    "event_id": "6bf23d1c-3e9a-448d-9960-738de85519f0",
+    "pipeline_ts": "2026-03-01T22:42:41.327687+00:00",
+    "timestamp": "2024-03-15T14:23:30+00:00",
+    "source_ip": "172.16.5.8",
+    "username": "bwilson",
+    "hostname": "auth-server-02",
+    "action": "login_success",
+    "outcome": "success",
+    "severity": "low",
+    "log_source": "demo",
+    "raw_message": "Successful login for bwilson from VPN endpoint"
+  },
+  {
+    "event_id": "01eb5f6e-7c58-4e2c-88f0-4047e2e76657",
+    "pipeline_ts": "2026-03-01T22:42:41.327696+00:00",
+    "action": "login_failed",
+    "outcome": "failure",
+    "log_source": "demo",
+    "raw_message": "Dirty record with invalid data \u2014 should be handled gracefully"
+  },
+  {
+    "event_id": "b126c6a8-33c7-416b-8ad6-88c3b342b075",
+    "pipeline_ts": "2026-03-01T22:42:41.328015+00:00",
+    "log_source": "demo",
+    "extra": {
+      "eventTime": "2024-03-15T11:00:00Z",
+      "eventSource": "iam.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "sourceIPAddress": "10.0.0.50",
+      "userIdentity": {
+        "userName": "svc_deploy"
+      },
+      "responseElements": {
+        "ConsoleLogin": "Success"
+      },
+      "userAgent": "aws-internal/3",
+      "awsRegion": "us-east-1"
+    }
+  },
+  {
+    "event_id": "14489f84-c250-4469-bc02-2826d2e46ea7",
+    "pipeline_ts": "2026-03-01T22:42:41.328023+00:00",
+    "log_source": "demo",
+    "extra": {
+      "eventTime": "2024-03-15T23:45:01Z",
+      "eventSource": "iam.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "sourceIPAddress": "203.0.113.77",
+      "userIdentity": {
+        "userName": "admin"
+      },
+      "responseElements": {
+        "ConsoleLogin": "Success"
+      },
+      "userAgent": "Mozilla/5.0",
+      "awsRegion": "us-east-1"
+    }
+  },
+  {
+    "event_id": "da70c8b1-bcf4-465b-b71d-73c157676e30",
+    "pipeline_ts": "2026-03-01T22:42:41.328029+00:00",
+    "log_source": "demo",
+    "extra": {
+      "eventTime": "2024-03-15T23:50:00Z",
+      "eventSource": "s3.amazonaws.com",
+      "eventName": "GetObject",
+      "sourceIPAddress": "203.0.113.77",
+      "userIdentity": {
+        "userName": "admin"
+      },
+      "requestParameters": {
+        "bucketName": "prod-secrets",
+        "key": "db-credentials.env"
+      },
+      "awsRegion": "us-east-1"
+    }
+  },
+  {
+    "event_id": "e81a8934-afa4-44b7-84a8-fa06f329eef7",
+    "pipeline_ts": "2026-03-01T22:42:41.328035+00:00",
+    "log_source": "demo",
+    "extra": {
+      "eventTime": "2024-03-15T12:00:00Z",
+      "eventSource": "ec2.amazonaws.com",
+      "eventName": "DescribeInstances",
+      "sourceIPAddress": "10.0.0.42",
+      "userIdentity": {
+        "userName": "bwilson"
+      },
+      "requestParameters": {},
+      "awsRegion": "us-east-1"
+    }
+  },
+  {
+    "event_id": "b0b422d4-0250-496b-8b05-25663e241b67",
+    "pipeline_ts": "2026-03-01T22:42:41.328041+00:00",
+    "log_source": "demo",
+    "extra": {
+      "eventTime": "2024-03-15T12:01:00Z",
+      "eventSource": "ec2.amazonaws.com",
+      "eventName": "RunInstances",
+      "sourceIPAddress": "10.0.0.42",
+      "userIdentity": {
+        "userName": "bwilson"
+      },
+      "requestParameters": {
+        "instanceType": "p3.16xlarge",
+        "imageId": "ami-0abcdef1234567890"
+      },
+      "awsRegion": "us-east-1"
+    }
+  },
+  {
+    "event_id": "7e938cb6-4cd5-451e-b4f1-b9d9909ec216",
+    "pipeline_ts": "2026-03-01T22:42:41.328047+00:00",
+    "log_source": "demo",
+    "extra": {
+      "eventTime": "INVALID_TIMESTAMP",
+      "eventSource": "sts.amazonaws.com",
+      "eventName": "AssumeRole",
+      "sourceIPAddress": "10.0.0.10",
+      "userIdentity": {
+        "userName": "ci-runner"
+      },
+      "responseElements": null
+    }
+  }
+]

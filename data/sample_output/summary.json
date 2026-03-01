@@ -1,0 +1,14 @@
+{
+  "total_events": 38,
+  "total_alerts": 26,
+  "alerts_by_severity": {
+    "critical": 23,
+    "medium": 2,
+    "high": 1
+  },
+  "alerts_by_rule": {
+    "Traffic from Watchlist IP": 23,
+    "Port Scan Detected": 2,
+    "Privileged Account Login Outside Business Hours": 1
+  }
+}

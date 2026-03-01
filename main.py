@@ -6,19 +6,66 @@ Start command: uvicorn main:app --host 0.0.0.0 --port $PORT
 from __future__ import annotations
 
 from pathlib import Path
+from typing import Any
 
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse
+from pydantic import BaseModel
 
 from siem_pipeline.pipeline import Pipeline
 
 app = FastAPI(
     title="SIEM Pipeline API",
-    description="Real-time security event ingestion, normalization, and threat detection.",
+    description=(
+        "A production-style security information and event management pipeline. "
+        "Ingests multi-format log sources, normalizes events to a common schema, "
+        "and applies MITRE ATT&CK-mapped detection rules in real time.\n\n"
+        "**Source:** [github.com/miketitus2003-cloud/siem-pipeline]"
+        "(https://github.com/miketitus2003-cloud/siem-pipeline)"
+    ),
     version="0.1.0",
     docs_url="/docs",
     redoc_url="/redoc",
 )
+
+
+# ---------------------------------------------------------------------------
+# Response models
+# ---------------------------------------------------------------------------
+
+class HealthResponse(BaseModel):
+    status: str
+    version: str
+
+
+class RuleInfo(BaseModel):
+    id: str
+    name: str
+    severity: str
+    mitre_tactic: str | None
+    mitre_technique: str | None
+
+
+class RulesResponse(BaseModel):
+    count: int
+    rules: list[RuleInfo]
+
+
+class PipelineSummary(BaseModel):
+    total_events: int
+    total_alerts: int
+    alerts_by_severity: dict[str, int]
+    alerts_by_rule: dict[str, int]
+
+
+class RunResponse(BaseModel):
+    summary: PipelineSummary
+    alerts: list[dict[str, Any]]
+
+
+# ---------------------------------------------------------------------------
+# Landing page
+# ---------------------------------------------------------------------------
 
 _LANDING_HTML = """<!DOCTYPE html>
 <html lang="en">
@@ -223,7 +270,7 @@ _LANDING_HTML = """<!DOCTYPE html>
     </table>
     <div class="actions">
       <a href="/docs" class="btn btn-primary">Explore API Docs</a>
-      <a href="/rules" class="btn btn-secondary">GET /rules</a>
+      <a href="/docs#/Detection/run_pipeline_run_post" class="btn btn-secondary">Try /run</a>
       <a href="https://github.com/miketitus2003-cloud/siem-pipeline" class="btn btn-secondary">GitHub</a>
     </div>
   </div>
@@ -233,34 +280,68 @@ _LANDING_HTML = """<!DOCTYPE html>
 """
 
 
+# ---------------------------------------------------------------------------
+# Endpoints
+# ---------------------------------------------------------------------------
+
 @app.get("/", response_class=HTMLResponse, include_in_schema=False)
 def landing():
     return _LANDING_HTML
 
 
-@app.get("/rules")
+@app.get(
+    "/health",
+    response_model=HealthResponse,
+    summary="Health check",
+    description="Returns service status. Used by Railway and uptime monitors.",
+    tags=["System"],
+)
+def health():
+    return HealthResponse(status="ok", version=app.version)
+
+
+@app.get(
+    "/rules",
+    response_model=RulesResponse,
+    summary="List detection rules",
+    description=(
+        "Returns all loaded detection rules with their MITRE ATT&CK technique "
+        "and tactic mappings, severity level, and unique rule ID."
+    ),
+    tags=["Detection"],
+)
 def list_rules():
     from siem_pipeline.rules.engine import RuleEngine
 
     engine = RuleEngine()
     engine.load_builtin_rules()
-    return {
-        "rules": [
-            {
-                "id": r.id,
-                "name": r.name,
-                "severity": r.severity,
-                "mitre_tactic": r.mitre_tactic,
-                "mitre_technique": r.mitre_technique,
-            }
-            for r in engine.rules
-        ]
-    }
+    rules = [
+        RuleInfo(
+            id=r.id,
+            name=r.name,
+            severity=r.severity,
+            mitre_tactic=r.mitre_tactic,
+            mitre_technique=r.mitre_technique,
+        )
+        for r in engine.rules
+    ]
+    return RulesResponse(count=len(rules), rules=rules)
 
 
-@app.post("/run")
-def run_pipeline(source: str = "unknown"):
-    """Run the pipeline against the bundled sample data."""
+@app.post(
+    "/run",
+    response_model=RunResponse,
+    summary="Run the detection pipeline",
+    description=(
+        "Parses the bundled sample log files (`data/raw/`), normalizes every event "
+        "to the canonical schema, evaluates all detection rules, and returns a "
+        "summary plus the full list of triggered alerts with matched event details.\n\n"
+        "**Sample data includes:** `auth_logs.json`, `firewall_logs.csv`, "
+        "`cloudtrail_sample.jsonl`"
+    ),
+    tags=["Detection"],
+)
+def run_pipeline(source: str = "demo"):
     data_dir = Path("data/raw")
     if not data_dir.exists():
         raise HTTPException(status_code=404, detail="data/raw directory not found")
@@ -273,7 +354,7 @@ def run_pipeline(source: str = "unknown"):
 
     summary, _events, matches = pipeline.run(input_paths)
 
-    return {
-        "summary": summary,
-        "alerts": [m.to_dict() for m in matches],
-    }
+    return RunResponse(
+        summary=PipelineSummary(**summary),
+        alerts=[m.to_dict() for m in matches],
+    )

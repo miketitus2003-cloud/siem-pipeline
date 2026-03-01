@@ -1,0 +1,766 @@
+[
+  {
+    "rule_id": "RULE-1005",
+    "rule_name": "Traffic from Watchlist IP",
+    "severity": "critical",
+    "description": "Network activity was observed from/to an IP address on the threat intelligence watchlist.",
+    "mitre_technique": "T1071",
+    "mitre_tactic": "Command and Control",
+    "details": {
+      "matched_ip": "203.0.113.99",
+      "watchlist_size": 4
+    },
+    "matched_event": {
+      "event_id": "cc2a763d-f008-4920-8eff-47a015cd9a40",
+      "pipeline_ts": "2026-03-01T22:42:41.325889+00:00",
+      "timestamp": "2024-03-15T08:00:01+00:00",
+      "source_ip": "10.0.0.5",
+      "dest_ip": "203.0.113.99",
+      "source_port": 54320,
+      "dest_port": 443,
+      "protocol": "TCP",
+      "hostname": "fw-edge-01",
+      "action": "allowed",
+      "log_source": "demo",
+      "extra": {
+        "bytes_sent": "1240",
+        "bytes_received": "8800"
+      }
+    }
+  },
+  {
+    "rule_id": "RULE-1005",
+    "rule_name": "Traffic from Watchlist IP",
+    "severity": "critical",
+    "description": "Network activity was observed from/to an IP address on the threat intelligence watchlist.",
+    "mitre_technique": "T1071",
+    "mitre_tactic": "Command and Control",
+    "details": {
+      "matched_ip": "203.0.113.99",
+      "watchlist_size": 4
+    },
+    "matched_event": {
+      "event_id": "7ee88f78-9120-421d-8cca-7e1068120da7",
+      "pipeline_ts": "2026-03-01T22:42:41.326594+00:00",
+      "timestamp": "2024-03-15T08:00:02+00:00",
+      "source_ip": "10.0.0.5",
+      "dest_ip": "203.0.113.99",
+      "source_port": 54321,
+      "dest_port": 80,
+      "protocol": "TCP",
+      "hostname": "fw-edge-01",
+      "action": "allowed",
+      "log_source": "demo",
+      "extra": {
+        "bytes_sent": "320",
+        "bytes_received": "12000"
+      }
+    }
+  },
+  {
+    "rule_id": "RULE-1005",
+    "rule_name": "Traffic from Watchlist IP",
+    "severity": "critical",
+    "description": "Network activity was observed from/to an IP address on the threat intelligence watchlist.",
+    "mitre_technique": "T1071",
+    "mitre_tactic": "Command and Control",
+    "details": {
+      "matched_ip": "203.0.113.99",
+      "watchlist_size": 4
+    },
+    "matched_event": {
+      "event_id": "ff0aea42-a644-45f5-81c8-3a029c347b13",
+      "pipeline_ts": "2026-03-01T22:42:41.326620+00:00",
+      "timestamp": "2024-03-15T08:00:03+00:00",
+      "source_ip": "10.0.0.5",
+      "dest_ip": "203.0.113.99",
+      "source_port": 54322,
+      "dest_port": 22,
+      "protocol": "TCP",
+      "hostname": "fw-edge-01",
+      "action": "blocked",
+      "log_source": "demo",
+      "extra": {
+        "bytes_sent": "0",
+        "bytes_received": "0"
+      }
+    }
+  },
+  {
+    "rule_id": "RULE-1005",
+    "rule_name": "Traffic from Watchlist IP",
+    "severity": "critical",
+    "description": "Network activity was observed from/to an IP address on the threat intelligence watchlist.",
+    "mitre_technique": "T1071",
+    "mitre_tactic": "Command and Control",
+    "details": {
+      "matched_ip": "203.0.113.99",
+      "watchlist_size": 4
+    },
+    "matched_event": {
+      "event_id": "f10ecd43-6bcf-45a8-9a1b-3167775583e8",
+      "pipeline_ts": "2026-03-01T22:42:41.326647+00:00",
+      "timestamp": "2024-03-15T08:00:04+00:00",
+      "source_ip": "10.0.0.5",
+      "dest_ip": "203.0.113.99",
+      "source_port": 54323,
+      "dest_port": 8080,
+      "protocol": "TCP",
+      "hostname": "fw-edge-01",
+      "action": "blocked",
+      "log_source": "demo",
+      "extra": {
+        "bytes_sent": "0",
+        "bytes_received": "0"
+      }
+    }
+  },
+  {
+    "rule_id": "RULE-1005",
+    "rule_name": "Traffic from Watchlist IP",
+    "severity": "critical",
+    "description": "Network activity was observed from/to an IP address on the threat intelligence watchlist.",
+    "mitre_technique": "T1071",
+    "mitre_tactic": "Command and Control",
+    "details": {
+      "matched_ip": "203.0.113.99",
+      "watchlist_size": 4
+    },
+    "matched_event": {
+      "event_id": "c56345a9-7a33-4ed2-a9d7-1d3ab0876243",
+      "pipeline_ts": "2026-03-01T22:42:41.326666+00:00",
+      "timestamp": "2024-03-15T08:00:05+00:00",
+      "source_ip": "10.0.0.5",
+      "dest_ip": "203.0.113.99",
+      "source_port": 54324,
+      "dest_port": 3306,
+      "protocol": "TCP",
+      "hostname": "fw-edge-01",
+      "action": "blocked",
+      "log_source": "demo",
+      "extra": {
+        "bytes_sent": "0",
+        "bytes_received": "0"
+      }
+    }
+  },
+  {
+    "rule_id": "RULE-1005",
+    "rule_name": "Traffic from Watchlist IP",
+    "severity": "critical",
+    "description": "Network activity was observed from/to an IP address on the threat intelligence watchlist.",
+    "mitre_technique": "T1071",
+    "mitre_tactic": "Command and Control",
+    "details": {
+      "matched_ip": "203.0.113.99",
+      "watchlist_size": 4
+    },
+    "matched_event": {
+      "event_id": "649e5359-f306-42ae-a994-b268b0ad18b4",
+      "pipeline_ts": "2026-03-01T22:42:41.326684+00:00",
+      "timestamp": "2024-03-15T08:00:06+00:00",
+      "source_ip": "10.0.0.5",
+      "dest_ip": "203.0.113.99",
+      "source_port": 54325,
+      "dest_port": 5432,
+      "protocol": "TCP",
+      "hostname": "fw-edge-01",
+      "action": "blocked",
+      "log_source": "demo",
+      "extra": {
+        "bytes_sent": "0",
+        "bytes_received": "0"
+      }
+    }
+  },
+  {
+    "rule_id": "RULE-1005",
+    "rule_name": "Traffic from Watchlist IP",
+    "severity": "critical",
+    "description": "Network activity was observed from/to an IP address on the threat intelligence watchlist.",
+    "mitre_technique": "T1071",
+    "mitre_tactic": "Command and Control",
+    "details": {
+      "matched_ip": "203.0.113.99",
+      "watchlist_size": 4
+    },
+    "matched_event": {
+      "event_id": "751ca222-19db-4716-9064-460415506028",
+      "pipeline_ts": "2026-03-01T22:42:41.326699+00:00",
+      "timestamp": "2024-03-15T08:00:07+00:00",
+      "source_ip": "10.0.0.5",
+      "dest_ip": "203.0.113.99",
+      "source_port": 54326,
+      "dest_port": 6379,
+      "protocol": "TCP",
+      "hostname": "fw-edge-01",
+      "action": "blocked",
+      "log_source": "demo",
+      "extra": {
+        "bytes_sent": "0",
+        "bytes_received": "0"
+      }
+    }
+  },
+  {
+    "rule_id": "RULE-1005",
+    "rule_name": "Traffic from Watchlist IP",
+    "severity": "critical",
+    "description": "Network activity was observed from/to an IP address on the threat intelligence watchlist.",
+    "mitre_technique": "T1071",
+    "mitre_tactic": "Command and Control",
+    "details": {
+      "matched_ip": "203.0.113.99",
+      "watchlist_size": 4
+    },
+    "matched_event": {
+      "event_id": "fe12ff5c-4bfc-4f51-8427-d184a90d9bc8",
+      "pipeline_ts": "2026-03-01T22:42:41.326720+00:00",
+      "timestamp": "2024-03-15T08:00:08+00:00",
+      "source_ip": "10.0.0.5",
+      "dest_ip": "203.0.113.99",
+      "source_port": 54327,
+      "dest_port": 27017,
+      "protocol": "TCP",
+      "hostname": "fw-edge-01",
+      "action": "blocked",
+      "log_source": "demo",
+      "extra": {
+        "bytes_sent": "0",
+        "bytes_received": "0"
+      }
+    }
+  },
+  {
+    "rule_id": "RULE-1005",
+    "rule_name": "Traffic from Watchlist IP",
+    "severity": "critical",
+    "description": "Network activity was observed from/to an IP address on the threat intelligence watchlist.",
+    "mitre_technique": "T1071",
+    "mitre_tactic": "Command and Control",
+    "details": {
+      "matched_ip": "203.0.113.99",
+      "watchlist_size": 4
+    },
+    "matched_event": {
+      "event_id": "23bb1845-34c4-43da-be76-ef52525d1df1",
+      "pipeline_ts": "2026-03-01T22:42:41.326737+00:00",
+      "timestamp": "2024-03-15T08:00:09+00:00",
+      "source_ip": "10.0.0.5",
+      "dest_ip": "203.0.113.99",
+      "source_port": 54328,
+      "dest_port": 9200,
+      "protocol": "TCP",
+      "hostname": "fw-edge-01",
+      "action": "blocked",
+      "log_source": "demo",
+      "extra": {
+        "bytes_sent": "0",
+        "bytes_received": "0"
+      }
+    }
+  },
+  {
+    "rule_id": "RULE-1005",
+    "rule_name": "Traffic from Watchlist IP",
+    "severity": "critical",
+    "description": "Network activity was observed from/to an IP address on the threat intelligence watchlist.",
+    "mitre_technique": "T1071",
+    "mitre_tactic": "Command and Control",
+    "details": {
+      "matched_ip": "203.0.113.99",
+      "watchlist_size": 4
+    },
+    "matched_event": {
+      "event_id": "0d8df5ee-5c96-437c-874b-55ec39e2577e",
+      "pipeline_ts": "2026-03-01T22:42:41.326753+00:00",
+      "timestamp": "2024-03-15T08:00:10+00:00",
+      "source_ip": "10.0.0.5",
+      "dest_ip": "203.0.113.99",
+      "source_port": 54329,
+      "dest_port": 5900,
+      "protocol": "TCP",
+      "hostname": "fw-edge-01",
+      "action": "blocked",
+      "log_source": "demo",
+      "extra": {
+        "bytes_sent": "0",
+        "bytes_received": "0"
+      }
+    }
+  },
+  {
+    "rule_id": "RULE-1005",
+    "rule_name": "Traffic from Watchlist IP",
+    "severity": "critical",
+    "description": "Network activity was observed from/to an IP address on the threat intelligence watchlist.",
+    "mitre_technique": "T1071",
+    "mitre_tactic": "Command and Control",
+    "details": {
+      "matched_ip": "203.0.113.99",
+      "watchlist_size": 4
+    },
+    "matched_event": {
+      "event_id": "a9d44c72-1703-44ed-870e-43807d234895",
+      "pipeline_ts": "2026-03-01T22:42:41.326770+00:00",
+      "timestamp": "2024-03-15T08:00:11+00:00",
+      "source_ip": "10.0.0.5",
+      "dest_ip": "203.0.113.99",
+      "source_port": 54330,
+      "dest_port": 23,
+      "protocol": "TCP",
+      "hostname": "fw-edge-01",
+      "action": "blocked",
+      "log_source": "demo",
+      "extra": {
+        "bytes_sent": "0",
+        "bytes_received": "0"
+      }
+    }
+  },
+  {
+    "rule_id": "RULE-1005",
+    "rule_name": "Traffic from Watchlist IP",
+    "severity": "critical",
+    "description": "Network activity was observed from/to an IP address on the threat intelligence watchlist.",
+    "mitre_technique": "T1071",
+    "mitre_tactic": "Command and Control",
+    "details": {
+      "matched_ip": "203.0.113.99",
+      "watchlist_size": 4
+    },
+    "matched_event": {
+      "event_id": "424b19ff-7744-4963-bb39-307fca6384f1",
+      "pipeline_ts": "2026-03-01T22:42:41.326786+00:00",
+      "timestamp": "2024-03-15T08:00:12+00:00",
+      "source_ip": "10.0.0.5",
+      "dest_ip": "203.0.113.99",
+      "source_port": 54331,
+      "dest_port": 445,
+      "protocol": "TCP",
+      "hostname": "fw-edge-01",
+      "action": "blocked",
+      "log_source": "demo",
+      "extra": {
+        "bytes_sent": "0",
+        "bytes_received": "0"
+      }
+    }
+  },
+  {
+    "rule_id": "RULE-1005",
+    "rule_name": "Traffic from Watchlist IP",
+    "severity": "critical",
+    "description": "Network activity was observed from/to an IP address on the threat intelligence watchlist.",
+    "mitre_technique": "T1071",
+    "mitre_tactic": "Command and Control",
+    "details": {
+      "matched_ip": "203.0.113.99",
+      "watchlist_size": 4
+    },
+    "matched_event": {
+      "event_id": "e2d23f0a-c1ef-443a-bb90-45ddb94472ab",
+      "pipeline_ts": "2026-03-01T22:42:41.326800+00:00",
+      "timestamp": "2024-03-15T08:00:13+00:00",
+      "source_ip": "10.0.0.5",
+      "dest_ip": "203.0.113.99",
+      "source_port": 54332,
+      "dest_port": 139,
+      "protocol": "TCP",
+      "hostname": "fw-edge-01",
+      "action": "blocked",
+      "log_source": "demo",
+      "extra": {
+        "bytes_sent": "0",
+        "bytes_received": "0"
+      }
+    }
+  },
+  {
+    "rule_id": "RULE-1005",
+    "rule_name": "Traffic from Watchlist IP",
+    "severity": "critical",
+    "description": "Network activity was observed from/to an IP address on the threat intelligence watchlist.",
+    "mitre_technique": "T1071",
+    "mitre_tactic": "Command and Control",
+    "details": {
+      "matched_ip": "203.0.113.99",
+      "watchlist_size": 4
+    },
+    "matched_event": {
+      "event_id": "a97390fa-b5cc-4378-84e0-26f6531789ff",
+      "pipeline_ts": "2026-03-01T22:42:41.326814+00:00",
+      "timestamp": "2024-03-15T08:00:14+00:00",
+      "source_ip": "10.0.0.5",
+      "dest_ip": "203.0.113.99",
+      "source_port": 54333,
+      "dest_port": 3389,
+      "protocol": "TCP",
+      "hostname": "fw-edge-01",
+      "action": "blocked",
+      "log_source": "demo",
+      "extra": {
+        "bytes_sent": "0",
+        "bytes_received": "0"
+      }
+    }
+  },
+  {
+    "rule_id": "RULE-1005",
+    "rule_name": "Traffic from Watchlist IP",
+    "severity": "critical",
+    "description": "Network activity was observed from/to an IP address on the threat intelligence watchlist.",
+    "mitre_technique": "T1071",
+    "mitre_tactic": "Command and Control",
+    "details": {
+      "matched_ip": "203.0.113.99",
+      "watchlist_size": 4
+    },
+    "matched_event": {
+      "event_id": "7547a5c2-a876-4fa7-94ae-33f148b0a1ca",
+      "pipeline_ts": "2026-03-01T22:42:41.326830+00:00",
+      "timestamp": "2024-03-15T08:00:15+00:00",
+      "source_ip": "10.0.0.5",
+      "dest_ip": "203.0.113.99",
+      "source_port": 54334,
+      "dest_port": 1433,
+      "protocol": "TCP",
+      "hostname": "fw-edge-01",
+      "action": "blocked",
+      "log_source": "demo",
+      "extra": {
+        "bytes_sent": "0",
+        "bytes_received": "0"
+      }
+    }
+  },
+  {
+    "rule_id": "RULE-1003",
+    "rule_name": "Port Scan Detected",
+    "severity": "medium",
+    "description": "A single source IP contacted an unusually high number of distinct destination ports, indicating possible port scanning activity.",
+    "mitre_technique": "T1046",
+    "mitre_tactic": "Discovery",
+    "details": {
+      "source_ip": "10.0.0.5",
+      "distinct_ports_count": 15,
+      "sample_ports": [
+        22,
+        23,
+        80,
+        139,
+        443,
+        445,
+        1433,
+        3306,
+        3389,
+        5432,
+        5900,
+        6379,
+        8080,
+        9200,
+        27017
+      ],
+      "window_seconds": 60
+    },
+    "matched_event": {
+      "event_id": "7547a5c2-a876-4fa7-94ae-33f148b0a1ca",
+      "pipeline_ts": "2026-03-01T22:42:41.326830+00:00",
+      "timestamp": "2024-03-15T08:00:15+00:00",
+      "source_ip": "10.0.0.5",
+      "dest_ip": "203.0.113.99",
+      "source_port": 54334,
+      "dest_port": 1433,
+      "protocol": "TCP",
+      "hostname": "fw-edge-01",
+      "action": "blocked",
+      "log_source": "demo",
+      "extra": {
+        "bytes_sent": "0",
+        "bytes_received": "0"
+      }
+    }
+  },
+  {
+    "rule_id": "RULE-1005",
+    "rule_name": "Traffic from Watchlist IP",
+    "severity": "critical",
+    "description": "Network activity was observed from/to an IP address on the threat intelligence watchlist.",
+    "mitre_technique": "T1071",
+    "mitre_tactic": "Command and Control",
+    "details": {
+      "matched_ip": "203.0.113.99",
+      "watchlist_size": 4
+    },
+    "matched_event": {
+      "event_id": "a2be4539-f9f0-453f-849a-80c62f53b2eb",
+      "pipeline_ts": "2026-03-01T22:42:41.326844+00:00",
+      "timestamp": "2024-03-15T08:00:16+00:00",
+      "source_ip": "10.0.0.5",
+      "dest_ip": "203.0.113.99",
+      "source_port": 54335,
+      "dest_port": 5985,
+      "protocol": "TCP",
+      "hostname": "fw-edge-01",
+      "action": "blocked",
+      "log_source": "demo",
+      "extra": {
+        "bytes_sent": "0",
+        "bytes_received": "0"
+      }
+    }
+  },
+  {
+    "rule_id": "RULE-1003",
+    "rule_name": "Port Scan Detected",
+    "severity": "medium",
+    "description": "A single source IP contacted an unusually high number of distinct destination ports, indicating possible port scanning activity.",
+    "mitre_technique": "T1046",
+    "mitre_tactic": "Discovery",
+    "details": {
+      "source_ip": "10.0.0.5",
+      "distinct_ports_count": 16,
+      "sample_ports": [
+        22,
+        23,
+        80,
+        139,
+        443,
+        445,
+        1433,
+        3306,
+        3389,
+        5432,
+        5900,
+        5985,
+        6379,
+        8080,
+        9200,
+        27017
+      ],
+      "window_seconds": 60
+    },
+    "matched_event": {
+      "event_id": "a2be4539-f9f0-453f-849a-80c62f53b2eb",
+      "pipeline_ts": "2026-03-01T22:42:41.326844+00:00",
+      "timestamp": "2024-03-15T08:00:16+00:00",
+      "source_ip": "10.0.0.5",
+      "dest_ip": "203.0.113.99",
+      "source_port": 54335,
+      "dest_port": 5985,
+      "protocol": "TCP",
+      "hostname": "fw-edge-01",
+      "action": "blocked",
+      "log_source": "demo",
+      "extra": {
+        "bytes_sent": "0",
+        "bytes_received": "0"
+      }
+    }
+  },
+  {
+    "rule_id": "RULE-1005",
+    "rule_name": "Traffic from Watchlist IP",
+    "severity": "critical",
+    "description": "Network activity was observed from/to an IP address on the threat intelligence watchlist.",
+    "mitre_technique": "T1071",
+    "mitre_tactic": "Command and Control",
+    "details": {
+      "matched_ip": "192.0.2.1",
+      "watchlist_size": 4
+    },
+    "matched_event": {
+      "event_id": "1d7dcbc0-1e33-46ec-9b56-ba5541342fd3",
+      "pipeline_ts": "2026-03-01T22:42:41.326859+00:00",
+      "timestamp": "2024-03-15T09:15:00+00:00",
+      "source_ip": "192.0.2.1",
+      "dest_ip": "10.0.0.100",
+      "source_port": 80,
+      "dest_port": 49200,
+      "protocol": "TCP",
+      "hostname": "fw-edge-01",
+      "action": "allowed",
+      "log_source": "demo",
+      "extra": {
+        "bytes_sent": "15000",
+        "bytes_received": "320"
+      }
+    }
+  },
+  {
+    "rule_id": "RULE-1005",
+    "rule_name": "Traffic from Watchlist IP",
+    "severity": "critical",
+    "description": "Network activity was observed from/to an IP address on the threat intelligence watchlist.",
+    "mitre_technique": "T1071",
+    "mitre_tactic": "Command and Control",
+    "details": {
+      "matched_ip": "198.51.100.5",
+      "watchlist_size": 4
+    },
+    "matched_event": {
+      "event_id": "f5ac5808-6488-4f0a-9847-5410a073bf20",
+      "pipeline_ts": "2026-03-01T22:42:41.327559+00:00",
+      "timestamp": "2024-03-15T02:14:01+00:00",
+      "source_ip": "198.51.100.5",
+      "username": "jsmith",
+      "hostname": "auth-server-01",
+      "action": "login_failed",
+      "outcome": "failure",
+      "severity": "medium",
+      "log_source": "demo",
+      "raw_message": "SSH authentication failure for user jsmith"
+    }
+  },
+  {
+    "rule_id": "RULE-1005",
+    "rule_name": "Traffic from Watchlist IP",
+    "severity": "critical",
+    "description": "Network activity was observed from/to an IP address on the threat intelligence watchlist.",
+    "mitre_technique": "T1071",
+    "mitre_tactic": "Command and Control",
+    "details": {
+      "matched_ip": "198.51.100.5",
+      "watchlist_size": 4
+    },
+    "matched_event": {
+      "event_id": "0f3d2648-e3af-410c-b8d0-405f7df7bd61",
+      "pipeline_ts": "2026-03-01T22:42:41.327577+00:00",
+      "timestamp": "2024-03-15T02:14:08+00:00",
+      "source_ip": "198.51.100.5",
+      "username": "jsmith",
+      "hostname": "auth-server-01",
+      "action": "login_failed",
+      "outcome": "failure",
+      "severity": "medium",
+      "log_source": "demo",
+      "raw_message": "SSH authentication failure for user jsmith"
+    }
+  },
+  {
+    "rule_id": "RULE-1005",
+    "rule_name": "Traffic from Watchlist IP",
+    "severity": "critical",
+    "description": "Network activity was observed from/to an IP address on the threat intelligence watchlist.",
+    "mitre_technique": "T1071",
+    "mitre_tactic": "Command and Control",
+    "details": {
+      "matched_ip": "198.51.100.5",
+      "watchlist_size": 4
+    },
+    "matched_event": {
+      "event_id": "9adfe490-c49e-45db-8a61-6b524f9a91f0",
+      "pipeline_ts": "2026-03-01T22:42:41.327591+00:00",
+      "timestamp": "2024-03-15T02:14:15+00:00",
+      "source_ip": "198.51.100.5",
+      "username": "jsmith",
+      "hostname": "auth-server-01",
+      "action": "login_failed",
+      "outcome": "failure",
+      "severity": "medium",
+      "log_source": "demo",
+      "raw_message": "SSH authentication failure for user jsmith"
+    }
+  },
+  {
+    "rule_id": "RULE-1005",
+    "rule_name": "Traffic from Watchlist IP",
+    "severity": "critical",
+    "description": "Network activity was observed from/to an IP address on the threat intelligence watchlist.",
+    "mitre_technique": "T1071",
+    "mitre_tactic": "Command and Control",
+    "details": {
+      "matched_ip": "198.51.100.5",
+      "watchlist_size": 4
+    },
+    "matched_event": {
+      "event_id": "b4829492-ad02-4e89-b807-d2b6271ef6c1",
+      "pipeline_ts": "2026-03-01T22:42:41.327605+00:00",
+      "timestamp": "2024-03-15T02:14:22+00:00",
+      "source_ip": "198.51.100.5",
+      "username": "jsmith",
+      "hostname": "auth-server-01",
+      "action": "login_failed",
+      "outcome": "failure",
+      "severity": "medium",
+      "log_source": "demo",
+      "raw_message": "SSH authentication failure for user jsmith"
+    }
+  },
+  {
+    "rule_id": "RULE-1005",
+    "rule_name": "Traffic from Watchlist IP",
+    "severity": "critical",
+    "description": "Network activity was observed from/to an IP address on the threat intelligence watchlist.",
+    "mitre_technique": "T1071",
+    "mitre_tactic": "Command and Control",
+    "details": {
+      "matched_ip": "198.51.100.5",
+      "watchlist_size": 4
+    },
+    "matched_event": {
+      "event_id": "5bf44981-aff6-4c03-8bb0-389c5343bcaf",
+      "pipeline_ts": "2026-03-01T22:42:41.327618+00:00",
+      "timestamp": "2024-03-15T02:14:29+00:00",
+      "source_ip": "198.51.100.5",
+      "username": "jsmith",
+      "hostname": "auth-server-01",
+      "action": "login_failed",
+      "outcome": "failure",
+      "severity": "medium",
+      "log_source": "demo",
+      "raw_message": "SSH authentication failure for user jsmith"
+    }
+  },
+  {
+    "rule_id": "RULE-1005",
+    "rule_name": "Traffic from Watchlist IP",
+    "severity": "critical",
+    "description": "Network activity was observed from/to an IP address on the threat intelligence watchlist.",
+    "mitre_technique": "T1071",
+    "mitre_tactic": "Command and Control",
+    "details": {
+      "matched_ip": "198.51.100.5",
+      "watchlist_size": 4
+    },
+    "matched_event": {
+      "event_id": "8bf1ced6-ddba-4b0a-92f8-5403025e5933",
+      "pipeline_ts": "2026-03-01T22:42:41.327632+00:00",
+      "timestamp": "2024-03-15T02:14:36+00:00",
+      "source_ip": "198.51.100.5",
+      "username": "jsmith",
+      "hostname": "auth-server-01",
+      "action": "login_failed",
+      "outcome": "failure",
+      "severity": "medium",
+      "log_source": "demo",
+      "raw_message": "SSH authentication failure for user jsmith \u2014 BRUTE FORCE THRESHOLD MET"
+    }
+  },
+  {
+    "rule_id": "RULE-1004",
+    "rule_name": "Privileged Account Login Outside Business Hours",
+    "severity": "high",
+    "description": "A privileged account authenticated outside normal business hours, which may indicate unauthorized access or insider threat activity.",
+    "mitre_technique": "T1078.003",
+    "mitre_tactic": "Persistence",
+    "details": {
+      "username": "admin",
+      "login_hour_utc": 3,
+      "business_hours": "06:00-20:00 UTC"
+    },
+    "matched_event": {
+      "event_id": "da687ee3-bc8f-4f82-b1da-4cf5b755f619",
+      "pipeline_ts": "2026-03-01T22:42:41.327645+00:00",
+      "timestamp": "2024-03-15T03:45:00+00:00",
+      "source_ip": "203.0.113.10",
+      "username": "admin",
+      "hostname": "auth-server-01",
+      "action": "login_success",
+      "outcome": "success",
+      "severity": "low",
+      "log_source": "demo",
+      "raw_message": "Successful SSH login for admin at 03:45 UTC"
+    }
+  }
+]
