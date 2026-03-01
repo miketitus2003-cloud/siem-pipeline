@@ -38,12 +38,73 @@ class RuleEngine:
     # Rule loading
     # ------------------------------------------------------------------
 
-    def load_builtin_rules(self) -> None:
-        """Import and instantiate all BaseRule subclasses from builtin_rules."""
+    def load_builtin_rules(self, config_path: Path | None = None) -> None:
+        """Import and instantiate all BaseRule subclasses from builtin_rules.
+
+        If config_path points to a YAML file, tunable thresholds are applied
+        to each rule after instantiation.  Falls back to class-level defaults
+        if the file is absent or a key is missing.
+        """
         from . import builtin_rules  # noqa: F401 — side-effect: registers subclasses
 
         loaded = self._register_subclasses(BaseRule)
         logger.info("Loaded %d built-in rules", loaded)
+
+        if config_path and config_path.exists():
+            self._apply_config(config_path)
+
+    def _apply_config(self, config_path: Path) -> None:
+        """Apply threshold overrides from a YAML config file."""
+        try:
+            import yaml  # optional dependency
+        except ImportError:
+            logger.warning("PyYAML not installed — skipping rules_config.yaml")
+            return
+
+        try:
+            with config_path.open() as fh:
+                cfg = yaml.safe_load(fh) or {}
+        except Exception as exc:
+            logger.error("Failed to read rules config %s: %s", config_path, exc)
+            return
+
+        rule_map = {type(r).__name__: r for r in self._rules}
+
+        _overrides = {
+            "BruteForceLoginRule": {
+                "THRESHOLD":      ("brute_force_login", "threshold"),
+                "WINDOW_SECONDS": ("brute_force_login", "window_seconds"),
+            },
+            "MultiSourceLoginRule": {
+                "THRESHOLD_IPS":  ("multi_source_login", "threshold_ips"),
+                "WINDOW_SECONDS": ("multi_source_login", "window_seconds"),
+            },
+            "PortScanRule": {
+                "THRESHOLD_PORTS": ("port_scan", "threshold_ports"),
+                "WINDOW_SECONDS":  ("port_scan", "window_seconds"),
+            },
+            "PrivilegedAfterHoursRule": {
+                "WORK_HOUR_START": ("privileged_after_hours", "work_hour_start_utc"),
+                "WORK_HOUR_END":   ("privileged_after_hours", "work_hour_end_utc"),
+            },
+            "WatchlistIPRule": {
+                "WATCHLIST": ("watchlist_ips", "ips"),
+            },
+        }
+
+        for cls_name, attrs in _overrides.items():
+            rule = rule_map.get(cls_name)
+            if rule is None:
+                continue
+            for attr, (section, key) in attrs.items():
+                value = cfg.get(section, {}).get(key)
+                if value is not None:
+                    if attr == "WATCHLIST":
+                        value = frozenset(value)
+                    setattr(rule, attr, value)
+                    logger.debug("Config override: %s.%s = %r", cls_name, attr, value)
+
+        logger.info("Applied rules config from %s", config_path)
 
     def load_rules_from_file(self, path: Path) -> None:
         """Dynamically load additional rules from an external Python file."""

@@ -1,5 +1,9 @@
 # SIEM Pipeline
 
+[![CI](https://github.com/miketitus2003-cloud/siem-pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/miketitus2003-cloud/siem-pipeline/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+
 A production-style **security information and event management pipeline** built in Python. Ingests JSON, JSONL, and CSV log files, normalizes them to a canonical event schema, evaluates stateful MITRE ATT&CK-mapped detection rules, and surfaces alerts via a REST API — like a mini SIEM engine.
 
 **Live demo:** [https://siem-pipeline.up.railway.app](https://siem-pipeline.up.railway.app) &nbsp;|&nbsp; **API docs:** [/docs](https://siem-pipeline.up.railway.app/docs)
@@ -45,7 +49,8 @@ Raw Logs (JSON / CSV / JSONL)
 | `GET` | `/` | Landing page |
 | `GET` | `/health` | Health check — `{"status": "ok"}` |
 | `GET` | `/rules` | List all detection rules with MITRE metadata |
-| `POST` | `/run?source=<name>` | Run pipeline against bundled sample logs |
+| `GET` | `/events?limit=20` | List normalized events from sample data |
+| `POST` | `/run?source=<name>` | Run full pipeline — normalize + detect |
 | `GET` | `/docs` | Interactive Swagger UI |
 | `GET` | `/redoc` | ReDoc documentation |
 

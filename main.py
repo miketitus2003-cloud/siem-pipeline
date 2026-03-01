@@ -358,3 +358,35 @@ def run_pipeline(source: str = "demo"):
         summary=PipelineSummary(**summary),
         alerts=[m.to_dict() for m in matches],
     )
+
+
+class EventsResponse(BaseModel):
+    count: int
+    events: list[dict[str, Any]]
+
+
+@app.get(
+    "/events",
+    response_model=EventsResponse,
+    summary="List normalized events from sample data",
+    description=(
+        "Parses and normalizes the bundled sample log files without running "
+        "detection rules. Returns the canonical `NormalizedEvent` schema for "
+        "each log record — useful for inspecting what normalization produces."
+    ),
+    tags=["Detection"],
+)
+def list_events(limit: int = 20):
+    data_dir = Path("data/raw")
+    if not data_dir.exists():
+        raise HTTPException(status_code=404, detail="data/raw directory not found")
+
+    pipeline = Pipeline(log_source="demo", enable_rules=False)
+    input_paths = [p for p in data_dir.iterdir() if p.is_file()]
+
+    if not input_paths:
+        raise HTTPException(status_code=404, detail="No log files found in data/raw")
+
+    _, events, _ = pipeline.run(input_paths)
+    capped = events[:limit]
+    return EventsResponse(count=len(events), events=[e.to_dict() for e in capped])
