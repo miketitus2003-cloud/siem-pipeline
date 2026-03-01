@@ -1,0 +1,12 @@
+# Runtime dependencies — all stdlib except pytest
+# The pipeline itself uses only the Python standard library.
+# Add third-party packages here as the project grows.
+
+# Optional: structured logging (drop-in for get_logger)
+# structlog>=24.0.0
+
+# Optional: YAML config loading
+# pyyaml>=6.0.1
+
+# Optional: rich terminal output
+# rich>=13.0.0

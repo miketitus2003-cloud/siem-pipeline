@@ -1,0 +1,111 @@
+[
+  {
+    "ts": "2024-03-15T02:14:01Z",
+    "src_ip": "198.51.100.5",
+    "hostname": "auth-server-01",
+    "user": "jsmith",
+    "event": "login_failed",
+    "status": "failure",
+    "level": "warning",
+    "message": "SSH authentication failure for user jsmith"
+  },
+  {
+    "ts": "2024-03-15T02:14:08Z",
+    "src_ip": "198.51.100.5",
+    "hostname": "auth-server-01",
+    "user": "jsmith",
+    "event": "login_failed",
+    "status": "failure",
+    "level": "warning",
+    "message": "SSH authentication failure for user jsmith"
+  },
+  {
+    "ts": "2024-03-15T02:14:15Z",
+    "src_ip": "198.51.100.5",
+    "hostname": "auth-server-01",
+    "user": "jsmith",
+    "event": "login_failed",
+    "status": "failure",
+    "level": "warning",
+    "message": "SSH authentication failure for user jsmith"
+  },
+  {
+    "ts": "2024-03-15T02:14:22Z",
+    "src_ip": "198.51.100.5",
+    "hostname": "auth-server-01",
+    "user": "jsmith",
+    "event": "login_failed",
+    "status": "failure",
+    "level": "warning",
+    "message": "SSH authentication failure for user jsmith"
+  },
+  {
+    "ts": "2024-03-15T02:14:29Z",
+    "src_ip": "198.51.100.5",
+    "hostname": "auth-server-01",
+    "user": "jsmith",
+    "event": "login_failed",
+    "status": "failure",
+    "level": "warning",
+    "message": "SSH authentication failure for user jsmith"
+  },
+  {
+    "ts": "2024-03-15T02:14:36Z",
+    "src_ip": "198.51.100.5",
+    "hostname": "auth-server-01",
+    "user": "jsmith",
+    "event": "login_failed",
+    "status": "failure",
+    "level": "warning",
+    "message": "SSH authentication failure for user jsmith — BRUTE FORCE THRESHOLD MET"
+  },
+  {
+    "ts": "2024-03-15T03:45:00Z",
+    "src_ip": "203.0.113.10",
+    "hostname": "auth-server-01",
+    "user": "admin",
+    "event": "login_success",
+    "status": "success",
+    "level": "info",
+    "message": "Successful SSH login for admin at 03:45 UTC"
+  },
+  {
+    "ts": "2024-03-15T14:22:10Z",
+    "src_ip": "10.0.0.42",
+    "hostname": "auth-server-01",
+    "user": "bwilson",
+    "event": "login_success",
+    "status": "success",
+    "level": "info",
+    "message": "Successful login for bwilson"
+  },
+  {
+    "ts": "2024-03-15T14:22:55Z",
+    "src_ip": "10.0.1.15",
+    "hostname": "auth-server-01",
+    "user": "bwilson",
+    "event": "login_success",
+    "status": "success",
+    "level": "info",
+    "message": "Successful login for bwilson from secondary workstation"
+  },
+  {
+    "ts": "2024-03-15T14:23:30Z",
+    "src_ip": "172.16.5.8",
+    "hostname": "auth-server-02",
+    "user": "bwilson",
+    "event": "login_success",
+    "status": "success",
+    "level": "info",
+    "message": "Successful login for bwilson from VPN endpoint"
+  },
+  {
+    "ts": null,
+    "src_ip": "bad-ip-address",
+    "user": "",
+    "event": "login_failed",
+    "status": "failure",
+    "level": "n/a",
+    "message": "Dirty record with invalid data — should be handled gracefully"
+  }
+]
