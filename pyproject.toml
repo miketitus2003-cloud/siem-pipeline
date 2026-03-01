@@ -13,7 +13,8 @@ dependencies = []
 siem-pipeline = "siem_pipeline.cli:main"
 
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["."]
+include = ["siem_pipeline*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -21,7 +22,7 @@ addopts = "-v --tb=short"
 log_cli = false
 
 [tool.coverage.run]
-source = ["src"]
+source = ["siem_pipeline"]
 omit = ["tests/*"]
 
 [tool.coverage.report]
